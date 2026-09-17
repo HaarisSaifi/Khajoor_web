@@ -122,6 +122,12 @@ export const DateGuidePage: React.FC<DateGuidePageProps> = ({ onSelectProduct })
                     className="w-full h-full object-cover rounded-xl"
                     loading="lazy"
                     decoding="async"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (target.src.endsWith('.webp')) {
+                        target.src = target.src.replace('.webp', '.jpg');
+                      }
+                    }}
                   />
                   <div className="absolute top-4 left-4 bg-date-900/85 text-gold-300 text-[11px] font-bold px-3 py-1 rounded-full backdrop-blur-sm">
                     {item.origin}

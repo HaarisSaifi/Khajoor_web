@@ -161,6 +161,12 @@ export const DateGuideSection: React.FC<DateGuideSectionProps> = ({
                   className="w-full h-full object-cover rounded-xl"
                   loading="lazy"
                   decoding="async"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src.endsWith('.webp')) {
+                      target.src = target.src.replace('.webp', '.jpg');
+                    }
+                  }}
                 />
                 <div className="absolute top-6 left-6 px-3 py-1 rounded-full bg-date-900/85 text-gold-300 text-xs font-bold backdrop-blur-sm">
                   {selected.variety} Variety

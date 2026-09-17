@@ -386,6 +386,12 @@ export const HeroStage: React.FC<HeroStageProps> = ({ onNavigate, onSelectProduc
                         loading="eager"
                         decoding="async"
                         draggable={false}
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          if (target.src.endsWith('.webp')) {
+                            target.src = target.src.replace('.webp', '.png');
+                          }
+                        }}
                       />
                     </motion.div>
 

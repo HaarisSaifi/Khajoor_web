@@ -104,10 +104,11 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [announcementText, setAnnouncementText] = useState('Free Express Shipping across India on orders above ₹999 • Fresh Harvest 2026');
   const [announcementVisible, setAnnouncementVisible] = useState(true);
 
-  // Products state (can be updated in admin)
+  // Products state (can be updated in admin, auto-clears stale v1 cache)
   const [products, setProducts] = useState<Product[]>(() => {
     try {
-      const saved = localStorage.getItem('nakhla_products');
+      localStorage.removeItem('nakhla_products'); // Purge stale cache with old formats
+      const saved = localStorage.getItem('nakhla_products_v2');
       return saved ? JSON.parse(saved) : PRODUCTS;
     } catch {
       return PRODUCTS;
@@ -199,7 +200,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Sync products
   useEffect(() => {
     try {
-      localStorage.setItem('nakhla_products', JSON.stringify(products));
+      localStorage.setItem('nakhla_products_v2', JSON.stringify(products));
     } catch (e) {
       console.error(e);
     }

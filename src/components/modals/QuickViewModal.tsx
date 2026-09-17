@@ -99,6 +99,14 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ onSelectProduct 
                 alt={quickViewProduct.name}
                 className="w-4/5 h-4/5 object-contain drop-shadow-xl"
                 decoding="async"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (target.src.endsWith('.webp')) {
+                    target.src = target.src.includes('cutout')
+                      ? target.src.replace('.webp', '.png')
+                      : target.src.replace('.webp', '.jpg');
+                  }
+                }}
               />
             </div>
 
@@ -115,7 +123,19 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ onSelectProduct 
                         : 'border-sand-300 opacity-70 hover:opacity-100'
                     }`}
                   >
-                    <img src={img} alt="Thumbnail" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                    <img
+                      src={img}
+                      alt="Thumbnail"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (target.src.endsWith('.webp')) {
+                          target.src = target.src.replace('.webp', '.jpg');
+                        }
+                      }}
+                    />
                   </button>
                 ))}
               </div>

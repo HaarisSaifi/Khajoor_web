@@ -141,6 +141,12 @@ export const GiftBoxesPage: React.FC<GiftBoxesPageProps> = () => {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
                 decoding="async"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (target.src.endsWith('.webp')) {
+                    target.src = target.src.replace('.webp', '.jpg');
+                  }
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-date-900/60 via-transparent to-transparent pointer-events-none" />
 

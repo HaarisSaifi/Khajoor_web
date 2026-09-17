@@ -73,6 +73,12 @@ export const GiftBanner: React.FC<GiftBannerProps> = ({ onNavigateGifts }) => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                   decoding="async"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src.endsWith('.webp')) {
+                      target.src = target.src.replace('.webp', '.jpg');
+                    }
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-date-900/60 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-4 left-4 right-4 bg-date-900/80 backdrop-blur-md p-3 rounded-xl border border-gold-400/30 text-center">

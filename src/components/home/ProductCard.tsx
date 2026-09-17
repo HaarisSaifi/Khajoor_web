@@ -73,6 +73,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelectProdu
             className="w-4/5 h-4/5 object-contain transition-transform duration-500 ease-out group-hover:scale-108 group-hover:-translate-y-2 drop-shadow-lg"
             loading="lazy"
             decoding="async"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (target.src.endsWith('.webp')) {
+                target.src = target.src.replace('.webp', '.png');
+              }
+            }}
           />
         </div>
 
