@@ -236,8 +236,8 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate }) => {
                 </div>
                 <p>Pan-India Express Cold-Chain Delivery within 2-4 days.</p>
                 <div className="pt-2 flex justify-between items-center text-xs text-date-600">
-                  <span>Customer Support: 1800-NAKHLA</span>
-                  <span>v1.0 Ready</span>
+                  <span>Concierge: +91 98765 43210</span>
+                  <span>Delhi, India</span>
                 </div>
               </div>
             </motion.aside>

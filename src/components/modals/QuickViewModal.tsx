@@ -276,8 +276,8 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ onSelectProduct 
                     maxLength={6}
                     value={pincode}
                     onChange={(e) => setPincode(e.target.value)}
-                    placeholder="Check delivery PIN code"
-                    className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-sand-100/60 border border-sand-300 text-date-900 placeholder:text-date-500 focus:outline-none focus:ring-1 focus:ring-gold-400 font-mono"
+                    placeholder="e.g. 110001 (6-digit PIN)"
+                    className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-sand-100/60 border border-sand-300 text-date-900 placeholder:text-date-400 focus:outline-none focus:ring-1 focus:ring-gold-400 font-mono"
                   />
                 </div>
                 <button

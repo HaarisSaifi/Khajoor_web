@@ -23,17 +23,17 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onOrderSuccess }) 
     placeOrder,
   } = useStore();
 
-  const [fullName, setFullName] = useState('Aarav Sharma');
-  const [email, setEmail] = useState('aarav.sharma@example.com');
-  const [phone, setPhone] = useState('+91 98200 12345');
-  const [addressLine1, setAddressLine1] = useState('Flat 502, Palm Heights, Powai');
-  const [landmark, setLandmark] = useState('Near Hiranandani Gardens');
-  const [city, setCity] = useState('Mumbai');
-  const [state, setState] = useState('Maharashtra');
-  const [pincode, setPincode] = useState('400076');
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [addressLine1, setAddressLine1] = useState('');
+  const [landmark, setLandmark] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [pincode, setPincode] = useState('');
   const [deliveryMethod, setDeliveryMethod] = useState<'standard' | 'express'>('standard');
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('upi');
-  const [upiId, setUpiId] = useState('aarav@okhdfcbank');
+  const [upiId, setUpiId] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
 
   if (!isCheckoutOpen) return null;
@@ -173,7 +173,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onOrderSuccess }) 
                         required
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400"
+                        placeholder="e.g. Rahul Sharma"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 placeholder:text-date-400 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400"
                       />
                     </div>
                     <div>
@@ -183,7 +184,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onOrderSuccess }) 
                         required
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400 font-mono"
+                        placeholder="e.g. 98765 43210"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 placeholder:text-date-400 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400 font-mono"
                       />
                     </div>
                     <div className="sm:col-span-2">
@@ -193,7 +195,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onOrderSuccess }) 
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400"
+                        placeholder="e.g. rahul.sharma@example.com"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 placeholder:text-date-400 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400"
                       />
                     </div>
                   </div>
@@ -213,7 +216,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onOrderSuccess }) 
                         required
                         value={addressLine1}
                         onChange={(e) => setAddressLine1(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400"
+                        placeholder="e.g. Flat 402, Royal Residency, Connaught Place"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 placeholder:text-date-400 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400"
                       />
                     </div>
                     <div className="sm:col-span-2">
@@ -222,7 +226,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onOrderSuccess }) 
                         type="text"
                         value={landmark}
                         onChange={(e) => setLandmark(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400"
+                        placeholder="e.g. Near Metro Station / Central Park"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 placeholder:text-date-400 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400"
                       />
                     </div>
                     <div>
@@ -233,7 +238,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onOrderSuccess }) 
                         required
                         value={pincode}
                         onChange={(e) => handlePincodeChange(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400 font-mono"
+                        placeholder="e.g. 110001"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 placeholder:text-date-400 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400 font-mono"
                       />
                     </div>
                     <div>
@@ -243,7 +249,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onOrderSuccess }) 
                         required
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400"
+                        placeholder="e.g. New Delhi"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 placeholder:text-date-400 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400"
                       />
                     </div>
                     <div className="sm:col-span-2">
@@ -253,7 +260,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onOrderSuccess }) 
                         required
                         value={state}
                         onChange={(e) => setState(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400"
+                        placeholder="e.g. Delhi"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50 border border-sand-300 text-date-900 placeholder:text-date-400 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-gold-400"
                       />
                     </div>
                   </div>
@@ -373,8 +381,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onOrderSuccess }) 
                         type="text"
                         value={upiId}
                         onChange={(e) => setUpiId(e.target.value)}
-                        placeholder="yourname@upi"
-                        className="px-2.5 py-1.5 rounded-lg bg-cream border border-sand-300 text-xs w-36 font-mono"
+                        placeholder="e.g. username@upi"
+                        className="px-2.5 py-1.5 rounded-lg bg-cream border border-sand-300 text-xs w-36 font-mono placeholder:text-date-400"
                       />
                     </div>
                   )}

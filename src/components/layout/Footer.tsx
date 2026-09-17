@@ -133,7 +133,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectProduct }) =
             <div className="space-y-2.5 text-xs text-sand-300/80">
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
-                <span>+91 98201 02026 (Mon-Sat, 9AM-8PM)</span>
+                <span>+91 98765 43210 (Mon-Sat, 9AM-8PM)</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
@@ -141,7 +141,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectProduct }) =
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-gold-400 flex-shrink-0 mt-0.5" />
-                <span>Central Fulfilment Centre, BKC, Mumbai 400051</span>
+                <span>Flagship Boutique & Central Fulfilment, Delhi, India</span>
               </div>
               <div className="pt-2">
                 <button

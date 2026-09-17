@@ -127,13 +127,13 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           publicToken: 'tok-98421',
           orderNumber: 'NKH-98421',
           customer: {
-            fullName: 'Kabir Singhania',
-            email: 'kabir.s@example.com',
-            phone: '+91 98201 54321',
-            addressLine1: 'B-402, Royal Palms Residencies, Bandra West',
-            city: 'Mumbai',
-            state: 'Maharashtra',
-            pincode: '400050'
+            fullName: 'Aarav Sharma',
+            email: 'customer@example.com',
+            phone: '+91 98765 43210',
+            addressLine1: 'B-402, Connaught Enclave, Barakhamba Road',
+            city: 'Delhi',
+            state: 'Delhi',
+            pincode: '110001'
           },
           items: [
             {

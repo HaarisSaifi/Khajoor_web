@@ -21,7 +21,7 @@ export const GiftBoxesPage: React.FC<GiftBoxesPageProps> = () => {
     'Mabroom',
   ]);
   const [ribbonColor, setRibbonColor] = useState<'gold' | 'emerald' | 'burgundy'>('gold');
-  const [giftNote, setGiftNote] = useState('Wishing you abundant blessings and sweetness on this blessed occasion.');
+  const [giftNote, setGiftNote] = useState('');
   const [added, setAdded] = useState(false);
 
   const varietiesList: { variety: DateVariety; label: string; desc: string }[] = [
@@ -343,8 +343,8 @@ export const GiftBoxesPage: React.FC<GiftBoxesPageProps> = () => {
                 rows={3}
                 value={giftNote}
                 onChange={(e) => setGiftNote(e.target.value)}
-                placeholder="Enter personal greetings for your recipient..."
-                className="w-full p-4 rounded-2xl bg-sand-50 border border-sand-300 text-xs sm:text-sm text-date-900 placeholder:text-date-500 focus:outline-none focus:ring-1 focus:ring-gold-400 resize-none"
+                placeholder="Write your personal greetings for your recipient (e.g. Wishing you and your family abundant blessings, happiness, and good health)..."
+                className="w-full p-4 rounded-2xl bg-sand-50 border border-sand-300 text-xs sm:text-sm text-date-900 placeholder:text-date-400 focus:outline-none focus:ring-1 focus:ring-gold-400 resize-none"
               />
             </div>
 

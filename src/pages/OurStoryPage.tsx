@@ -92,8 +92,33 @@ export const OurStoryPage: React.FC = () => {
               4. Pan-India Cold-Chain Air Cargo
             </h3>
             <p className="text-xs sm:text-sm text-date-700/80 leading-relaxed">
-              From our temperature-regulated central fulfillment hub in Mumbai, packages are dispatched via priority air to ensure prompt arrival in pristine condition at over 26,000 Indian PIN codes.
+              From our temperature-regulated central fulfillment boutique in Delhi, India, packages are dispatched via priority air to ensure prompt arrival in pristine condition at over 26,000 Indian PIN codes.
             </p>
+          </div>
+        </div>
+
+        {/* Founder & Leadership Section */}
+        <div className="p-8 sm:p-10 rounded-3xl bg-cream border border-sand-200 shadow-warm-md flex flex-col md:flex-row items-center gap-6 sm:gap-8">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-date-900 border-2 border-gold-400/60 text-gold-400 flex items-center justify-center font-serif-luxury text-2xl sm:text-3xl font-bold flex-shrink-0 shadow-warm-sm">
+            AI
+          </div>
+          <div className="space-y-2 text-center md:text-left flex-1">
+            <span className="text-xs font-bold uppercase tracking-widest text-caramel-600 block">
+              FOUNDER & MANAGING DIRECTOR
+            </span>
+            <h3 className="font-serif-luxury text-2xl sm:text-3xl font-bold text-date-900">
+              Adv. Irfan
+            </h3>
+            <p className="text-xs sm:text-sm text-date-700/80 leading-relaxed">
+              "Our endeavor at Nakhla Dates began with a singular principle: uncompromised authenticity and purity in every single harvest. We bridge generational oasis growers of Medina and Al-Ula directly with families across India who appreciate genuine grade, natural nectar, and sacred traditions."
+            </p>
+            <div className="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-date-600 font-medium">
+              <span>Delhi, India</span>
+              <span>•</span>
+              <span>Direct Oasis Partnerships</span>
+              <span>•</span>
+              <span>Est. 2026</span>
+            </div>
           </div>
         </div>
 
@@ -103,7 +128,7 @@ export const OurStoryPage: React.FC = () => {
             "We do not sell dates as bulk commodities. We curate them as mindful rituals worth slowing down for."
           </p>
           <span className="text-xs text-sand-300 uppercase tracking-widest font-semibold block">
-            — THE NAKHLA DATES CONCIERGE TEAM
+            — Adv. Irfan & The Nakhla Concierge Team (Delhi, India)
           </span>
         </div>
 

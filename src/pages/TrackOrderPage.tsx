@@ -7,16 +7,15 @@ import { formatINR } from '../utils/currency';
 export const TrackOrderPage: React.FC = () => {
   const { getOrderByIdOrNumber, orders } = useStore();
 
-  const [searchQuery, setSearchQuery] = useState('NKH-98421');
-  const [matchedOrder, setMatchedOrder] = useState<Order | null>(() => {
-    return getOrderByIdOrNumber('NKH-98421') || (orders.length > 0 ? orders[0] : null);
-  });
+  const [searchQuery, setSearchQuery] = useState('');
+  const [matchedOrder, setMatchedOrder] = useState<Order | null>(null);
   const [searched, setSearched] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!searchQuery.trim()) return;
     setSearched(true);
-    const found = getOrderByIdOrNumber(searchQuery);
+    const found = getOrderByIdOrNumber(searchQuery.trim());
     setMatchedOrder(found || null);
   };
 
@@ -60,8 +59,8 @@ export const TrackOrderPage: React.FC = () => {
               required
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="e.g. NKH-98421"
-              className="w-full pl-10 pr-4 py-3 rounded-full bg-cream border border-sand-300 text-date-900 placeholder:text-date-500 text-sm font-semibold uppercase font-mono focus:outline-none focus:ring-2 focus:ring-gold-400"
+              placeholder="e.g. NKH-98421 or 98765 43210"
+              className="w-full pl-10 pr-4 py-3 rounded-full bg-cream border border-sand-300 text-date-900 placeholder:text-date-400 text-sm font-semibold uppercase font-mono focus:outline-none focus:ring-2 focus:ring-gold-400"
             />
           </div>
           <button
@@ -183,7 +182,17 @@ export const TrackOrderPage: React.FC = () => {
               Please verify your order number in your confirmation email or try searching with demo code <strong>NKH-98421</strong>.
             </p>
           </div>
-        ) : null}
+        ) : (
+          <div className="p-8 rounded-3xl bg-cream/70 border border-dashed border-sand-300 text-center max-w-md mx-auto space-y-2">
+            <PackageCheck className="w-8 h-8 text-gold-500 mx-auto" />
+            <h3 className="font-serif-luxury text-base font-bold text-date-900">
+              Track Your Freshness Consignment
+            </h3>
+            <p className="text-xs text-date-600 leading-relaxed">
+              Enter the Order ID from your confirmation receipt or your registered 10-digit mobile number to view live transit milestones.
+            </p>
+          </div>
+        )}
 
       </div>
     </div>

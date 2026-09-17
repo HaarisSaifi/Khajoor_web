@@ -50,8 +50,8 @@ export const NewsletterSection: React.FC = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
-                className="flex-1 px-5 py-3.5 rounded-full bg-cream text-date-900 placeholder:text-date-700/50 border border-sand-300 focus:outline-none focus:ring-2 focus:ring-gold-400 text-sm font-medium shadow-sm"
+                placeholder="Enter your email (e.g. name@example.com)"
+                className="flex-1 px-5 py-3.5 rounded-full bg-cream text-date-900 placeholder:text-date-400 border border-sand-300 focus:outline-none focus:ring-2 focus:ring-gold-400 text-sm font-medium shadow-sm"
               />
               <button
                 type="submit"
@@ -82,8 +82,8 @@ export const NewsletterSection: React.FC = () => {
                   type="tel"
                   value={whatsapp}
                   onChange={(e) => setWhatsapp(e.target.value)}
-                  placeholder="+91 Phone number"
-                  className="px-3 py-1.5 rounded-full bg-cream text-date-900 text-xs border border-sand-300 focus:outline-none focus:ring-1 focus:ring-gold-400 w-36"
+                  placeholder="e.g. 98765 43210"
+                  className="px-3 py-1.5 rounded-full bg-cream text-date-900 placeholder:text-date-400 text-xs border border-sand-300 focus:outline-none focus:ring-1 focus:ring-gold-400 w-36 font-mono"
                 />
               )}
             </div>
