@@ -47,6 +47,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate }) => {
   return (
     <>
       <header
+        style={{ transform: 'translateZ(0)', willChange: 'transform' }}
         className={`sticky top-0 z-40 transition-all duration-300 ${
           isScrolled
             ? 'glass-nav py-3.5 shadow-warm-sm'
@@ -187,6 +188,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, onNavigate }) => {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              style={{ willChange: 'transform' }}
               className="fixed inset-y-0 left-0 w-4/5 max-w-sm bg-sand-50 z-50 shadow-2xl flex flex-col justify-between p-6 lg:hidden border-r border-sand-200"
             >
               <div>

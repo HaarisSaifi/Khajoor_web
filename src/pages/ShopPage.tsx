@@ -129,7 +129,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onSelectProduct }) => {
           </div>
 
           {/* Quick Category Chips */}
-          <div className="flex items-center gap-2 overflow-x-auto pt-2 border-t border-sand-200 no-scrollbar">
+          <div className="flex items-center gap-2 overflow-x-auto pt-2 border-t border-sand-200 no-scrollbar" style={{ WebkitOverflowScrolling: 'touch' }}>
             {[
               { id: 'all', label: 'All' },
               { id: 'premium', label: 'Royal Premium' },

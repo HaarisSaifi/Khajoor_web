@@ -12,8 +12,8 @@ export const GiftBanner: React.FC<GiftBannerProps> = ({ onNavigateGifts }) => {
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-palm-700 via-date-900 to-date-800 text-sand-50 p-8 sm:p-12 lg:p-16 shadow-2xl border border-gold-400/30">
           
           {/* Subtle Decorative Golden Corner Accents */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-gold-400/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-caramel-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-56 sm:w-80 h-56 sm:h-80 bg-gold-400/10 rounded-full blur-2xl sm:blur-3xl pointer-events-none" style={{ transform: 'translateZ(0)' }} />
+          <div className="absolute bottom-0 left-0 w-56 sm:w-80 h-56 sm:h-80 bg-caramel-500/10 rounded-full blur-2xl sm:blur-3xl pointer-events-none" style={{ transform: 'translateZ(0)' }} />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
             

@@ -88,19 +88,15 @@ export const FeaturedCatalog: React.FC<FeaturedCatalogProps> = ({
         </div>
 
         {/* Product Cards Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <AnimatePresence>
             {filteredProducts.map((product) => (
               <motion.div
                 key={product.id}
-                layout
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.25 }}
               >
                 <ProductCard
                   product={product}
@@ -109,7 +105,7 @@ export const FeaturedCatalog: React.FC<FeaturedCatalogProps> = ({
               </motion.div>
             ))}
           </AnimatePresence>
-        </motion.div>
+        </div>
 
       </div>
     </section>

@@ -49,6 +49,8 @@ export const HeroStage: React.FC<HeroStageProps> = ({ onNavigate, onSelectProduc
   }, []);
 
   const handleStageMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Avoid running on mobile touch screens to preserve battery and avoid scroll stutter
+    if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) return;
     if (!stageRef.current) return;
     const rect = stageRef.current.getBoundingClientRect();
     const nx = (e.clientX - rect.left) / rect.width - 0.5;
@@ -133,14 +135,14 @@ export const HeroStage: React.FC<HeroStageProps> = ({ onNavigate, onSelectProduc
       aria-label="Khajoor Variety Showcase"
     >
       {/* Background Subtle Sand Gradient & Organic Ambient Glow */}
-      <div className="absolute inset-0 pointer-events-none opacity-60" style={{ transform: 'translateZ(0)' }}>
+      <div className="absolute inset-0 pointer-events-none opacity-60 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
         <div
-          className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full blur-3xl transition-colors duration-1000"
-          style={{ backgroundColor: `${activeSlide.accentColor}15`, willChange: 'background-color' }}
+          className="absolute -top-32 -right-32 w-[360px] sm:w-[600px] h-[360px] sm:h-[600px] rounded-full blur-2xl sm:blur-3xl transition-colors duration-1000"
+          style={{ backgroundColor: `${activeSlide.accentColor}15`, willChange: 'background-color', transform: 'translateZ(0)' }}
         />
         <div
-          className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full blur-3xl transition-colors duration-1000"
-          style={{ backgroundColor: `${activeSlide.blobColor}35`, willChange: 'background-color' }}
+          className="absolute -bottom-32 -left-32 w-[320px] sm:w-[500px] h-[320px] sm:h-[500px] rounded-full blur-2xl sm:blur-3xl transition-colors duration-1000"
+          style={{ backgroundColor: `${activeSlide.blobColor}35`, willChange: 'background-color', transform: 'translateZ(0)' }}
         />
       </div>
 
@@ -283,24 +285,26 @@ export const HeroStage: React.FC<HeroStageProps> = ({ onNavigate, onSelectProduc
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div
                   className="w-[88%] h-[88%] rounded-full border border-gold-400/20 animate-spin"
-                  style={{ animationDuration: '45s' }}
+                  style={{ animationDuration: '45s', willChange: 'transform' }}
                 />
               </div>
 
               {/* Floating Decorative Date Leaf Badge */}
               <motion.div
-                className="absolute top-8 right-4 sm:right-6 w-11 h-11 rounded-full bg-cream/95 backdrop-blur-md shadow-warm-md p-2 flex items-center justify-center border border-sand-200 pointer-events-none z-30"
+                className="absolute top-8 right-4 sm:right-6 w-11 h-11 rounded-full bg-cream shadow-warm-md p-2 flex items-center justify-center border border-sand-200 pointer-events-none z-30"
                 animate={{ y: [-6, 6, -6], rotate: [0, 8, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+                style={{ willChange: 'transform' }}
               >
                 <Leaf className="w-5 h-5 text-palm-600" />
               </motion.div>
 
               {/* Floating VIP Quality Seal */}
               <motion.div
-                className="absolute bottom-20 left-2 sm:left-4 w-14 h-14 rounded-2xl bg-cream/95 backdrop-blur-md shadow-warm-md p-2 flex flex-col items-center justify-center border border-gold-400/40 pointer-events-none z-30"
+                className="absolute bottom-20 left-2 sm:left-4 w-14 h-14 rounded-2xl bg-cream shadow-warm-md p-2 flex flex-col items-center justify-center border border-gold-400/40 pointer-events-none z-30"
                 animate={{ y: [6, -6, 6], rotate: [-4, 4, -4] }}
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+                style={{ willChange: 'transform' }}
               >
                 <span className="text-[10px] font-bold uppercase text-gold-600 leading-none">GRADE</span>
                 <span className="text-sm font-black text-date-900 leading-none mt-0.5">VIP</span>
@@ -360,12 +364,14 @@ export const HeroStage: React.FC<HeroStageProps> = ({ onNavigate, onSelectProduc
                       if (info.offset.x > 55) goToPrev();
                       else if (info.offset.x < -55) goToNext();
                     }}
+                    style={{ touchAction: 'pan-y' }}
                     className="relative flex flex-col items-center justify-center cursor-grab active:cursor-grabbing pointer-events-auto"
                   >
                     {/* Floating Bobbing Motion */}
                     <motion.div
                       animate={{ y: [-5, 5, -5] }}
                       transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                      style={{ willChange: 'transform' }}
                       className="relative w-[340px] sm:w-[440px] lg:w-[480px] aspect-square flex items-center justify-center select-none"
                     >
                       {/* Interactive Studio Specular Sheen (Moves with cursor smoothly without overlay GPU penalty) */}
@@ -381,11 +387,12 @@ export const HeroStage: React.FC<HeroStageProps> = ({ onNavigate, onSelectProduc
                       <img
                         src={activeSlide.productCutout}
                         alt={`${activeSlide.title} on artisanal pedestal platter`}
-                        className="w-full h-full object-contain pointer-events-auto select-none drop-shadow-[0_20px_35px_rgba(42,18,13,0.38)] hover:scale-[1.03] transition-transform duration-500 ease-out"
+                        className="w-full h-full object-contain pointer-events-auto select-none drop-shadow-[0_16px_28px_rgba(42,18,13,0.32)] hover:scale-[1.03] transition-transform duration-500 ease-out"
                         onClick={() => onSelectProduct(activeSlide.productSlug)}
                         loading="eager"
                         decoding="async"
                         draggable={false}
+                        style={{ willChange: 'transform' }}
                         onError={(e) => {
                           const target = e.currentTarget;
                           if (target.src.endsWith('.webp')) {

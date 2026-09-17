@@ -129,7 +129,7 @@ export const DateGuideSection: React.FC<DateGuideSectionProps> = ({
         </div>
 
         {/* Variety Tabs */}
-        <div className="flex items-center justify-center gap-2 overflow-x-auto pb-4 no-scrollbar mb-8">
+        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-4 no-scrollbar mb-8 px-2 sm:px-0" style={{ WebkitOverflowScrolling: 'touch' }}>
           {GUIDE_ITEMS.map((item) => {
             const isActive = item.variety === activeTab;
             return (

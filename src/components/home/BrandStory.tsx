@@ -10,9 +10,9 @@ export const BrandStory: React.FC<BrandStoryProps> = ({ onNavigateStory }) => {
   return (
     <section className="relative py-16 lg:py-24 bg-date-900 text-sand-50 overflow-hidden">
       {/* Background Decorative Radial Blobs */}
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute top-10 left-10 w-96 h-96 rounded-full bg-gold-400 blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-caramel-500 blur-3xl" />
+      <div className="absolute inset-0 pointer-events-none opacity-20 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
+        <div className="absolute top-10 left-10 w-64 sm:w-96 h-64 sm:h-96 rounded-full bg-gold-400 blur-2xl sm:blur-3xl" style={{ transform: 'translateZ(0)' }} />
+        <div className="absolute bottom-10 right-10 w-64 sm:w-96 h-64 sm:h-96 rounded-full bg-caramel-500 blur-2xl sm:blur-3xl" style={{ transform: 'translateZ(0)' }} />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -21,7 +21,7 @@ export const BrandStory: React.FC<BrandStoryProps> = ({ onNavigateStory }) => {
           {/* Left Column: Image Collage & Heritage Visual */}
           <div className="lg:col-span-6 relative">
             {/* Warm Gold Organic Backdrop */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-gold-500/20 to-caramel-500/20 rounded-4xl blur-xl" />
+            <div className="absolute -inset-4 bg-gradient-to-tr from-gold-500/20 to-caramel-500/20 rounded-4xl blur-lg sm:blur-xl" style={{ transform: 'translateZ(0)' }} />
 
             <div className="relative rounded-3xl overflow-hidden border-2 border-gold-400/30 shadow-2xl">
               <img

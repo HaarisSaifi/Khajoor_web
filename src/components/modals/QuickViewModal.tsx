@@ -80,6 +80,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ onSelectProduct 
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.94, y: 20 }}
           transition={{ type: 'spring', damping: 25, stiffness: 280 }}
+          style={{ willChange: 'transform, opacity' }}
           className="relative w-full max-w-4xl bg-cream rounded-4xl shadow-2xl border border-sand-200 overflow-hidden z-10 my-auto max-h-[90vh] flex flex-col md:flex-row"
         >
           {/* Close Button */}

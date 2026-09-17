@@ -18,6 +18,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 
@@ -25,6 +26,8 @@
     background-color: var(--sand-50);
     color: var(--date-900);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, .font-serif-luxury {
@@ -52,10 +55,11 @@
 
 /* Glassmorphic luxury effects */
 .glass-nav {
-  background: rgba(255, 248, 237, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 248, 237, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(213, 162, 75, 0.18);
+  transform: translateZ(0);
 }
 
 .glass-dark {

@@ -66,6 +66,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onNavigateShop }) => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 260 }}
+              style={{ willChange: 'transform' }}
               className="w-screen max-w-md bg-cream shadow-2xl flex flex-col justify-between border-l border-sand-200"
             >
               {/* Drawer Header */}
