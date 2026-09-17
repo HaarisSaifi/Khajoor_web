@@ -72,6 +72,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelectProdu
             alt={product.name}
             className="w-4/5 h-4/5 object-contain transition-transform duration-500 ease-out group-hover:scale-108 group-hover:-translate-y-2 drop-shadow-lg"
             loading="lazy"
+            decoding="async"
           />
         </div>
 

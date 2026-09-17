@@ -23,9 +23,11 @@ export const OurStoryPage: React.FC = () => {
         {/* Featured Heritage Photo */}
         <div className="relative rounded-4xl overflow-hidden border-2 border-gold-400/30 shadow-2xl">
           <img
-            src="/images/palm_grove.jpg"
+            src="/images/palm_grove.webp"
             alt="Date Palm groves at golden sunset"
             className="w-full h-[400px] sm:h-[500px] object-cover"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-date-900/80 via-transparent to-transparent" />
           <div className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl bg-date-900/80 backdrop-blur-md border border-gold-400/30 text-sand-50">

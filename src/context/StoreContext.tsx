@@ -145,7 +145,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
               weightGrams: 500,
               priceMinor: 145000,
               quantity: 1,
-              image: '/images/ajwa.jpg'
+              image: '/images/ajwa.webp'
             }
           ],
           deliveryMethod: 'express',

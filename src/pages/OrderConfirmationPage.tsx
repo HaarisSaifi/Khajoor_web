@@ -114,6 +114,8 @@ export const OrderConfirmationPage: React.FC<OrderConfirmationPageProps> = ({
                     src={item.image}
                     alt={item.productName}
                     className="w-12 h-12 rounded-xl object-contain bg-sand-100 p-1 border border-sand-200"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div>
                     <h4 className="text-xs sm:text-sm font-bold text-date-900">{item.productName}</h4>

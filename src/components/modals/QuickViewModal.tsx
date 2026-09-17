@@ -98,6 +98,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ onSelectProduct 
                 src={quickViewProduct.images[activeImageIndex] || quickViewProduct.cutoutImage}
                 alt={quickViewProduct.name}
                 className="w-4/5 h-4/5 object-contain drop-shadow-xl"
+                decoding="async"
               />
             </div>
 
@@ -114,7 +115,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ onSelectProduct 
                         : 'border-sand-300 opacity-70 hover:opacity-100'
                     }`}
                   >
-                    <img src={img} alt="Thumbnail" className="w-full h-full object-cover" />
+                    <img src={img} alt="Thumbnail" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                   </button>
                 ))}
               </div>

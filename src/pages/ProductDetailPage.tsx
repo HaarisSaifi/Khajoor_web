@@ -120,6 +120,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 src={product.images[activeImageIndex] || product.cutoutImage}
                 alt={product.name}
                 className="w-4/5 h-4/5 object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105"
+                decoding="async"
               />
             </div>
 
@@ -136,7 +137,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                         : 'border-sand-200 opacity-70 hover:opacity-100'
                     }`}
                   >
-                    <img src={img} alt="Thumbnail" className="w-full h-full object-cover rounded-xl" />
+                    <img src={img} alt="Thumbnail" className="w-full h-full object-cover rounded-xl" loading="lazy" decoding="async" />
                   </button>
                 ))}
               </div>

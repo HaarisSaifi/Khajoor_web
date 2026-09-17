@@ -19,7 +19,7 @@ export const DateGuidePage: React.FC<DateGuidePageProps> = ({ onSelectProduct })
       color: 'Near-black mahogany',
       pairings: 'Fresh Camel or Almond Milk, Arabic Gahwa',
       healthFocus: 'Rich in polyphenols, flavonoids and cardiac support',
-      image: '/images/ajwa.jpg',
+      image: '/images/ajwa.webp',
       price: 75000,
     },
     {
@@ -32,7 +32,7 @@ export const DateGuidePage: React.FC<DateGuidePageProps> = ({ onSelectProduct })
       color: 'Amber-brown glossy',
       pairings: 'Blue Cheese, Roasted Walnuts, Espresso',
       healthFocus: 'Natural electrolyte replenishment & sustained athletic fuel',
-      image: '/images/medjool.jpg',
+      image: '/images/medjool.webp',
       price: 65000,
     },
     {
@@ -45,7 +45,7 @@ export const DateGuidePage: React.FC<DateGuidePageProps> = ({ onSelectProduct })
       color: 'Golden amber honey',
       pairings: 'Cardamom Gahwa, Clotted Cream, Tahini dip',
       healthFocus: 'Digestive enzyme support & natural sucrose boost',
-      image: '/images/sukkari.jpg',
+      image: '/images/sukkari.webp',
       price: 52000,
     },
     {
@@ -58,7 +58,7 @@ export const DateGuidePage: React.FC<DateGuidePageProps> = ({ onSelectProduct })
       color: 'Mahogany with copper tones',
       pairings: 'Ceylon Black Tea, Roasted Almonds, Dark Chocolate',
       healthFocus: 'High dietary fiber and balanced glycemic release',
-      image: '/images/mabroom.jpg',
+      image: '/images/mabroom.webp',
       price: 59000,
     },
     {
@@ -71,7 +71,7 @@ export const DateGuidePage: React.FC<DateGuidePageProps> = ({ onSelectProduct })
       color: 'Dark purplish-black',
       pairings: 'Ginger Cardamom Tea, Roasted Cashews',
       healthFocus: 'High elemental iron, magnesium and post-fast restoration',
-      image: '/images/safawi.jpg',
+      image: '/images/safawi.webp',
       price: 48000,
     },
     {
@@ -84,7 +84,7 @@ export const DateGuidePage: React.FC<DateGuidePageProps> = ({ onSelectProduct })
       color: 'Chestnut sandstone',
       pairings: 'Oatmeal, Green Smoothies, Warm Milk',
       healthFocus: 'Everyday vitality, potassium and clean wholesome energy',
-      image: '/images/khudri.jpg',
+      image: '/images/khudri.webp',
       price: 38000,
     },
   ];
@@ -120,6 +120,8 @@ export const DateGuidePage: React.FC<DateGuidePageProps> = ({ onSelectProduct })
                     src={item.image}
                     alt={item.variety}
                     className="w-full h-full object-cover rounded-xl"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute top-4 left-4 bg-date-900/85 text-gold-300 text-[11px] font-bold px-3 py-1 rounded-full backdrop-blur-sm">
                     {item.origin}

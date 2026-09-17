@@ -25,9 +25,11 @@ export const BrandStory: React.FC<BrandStoryProps> = ({ onNavigateStory }) => {
 
             <div className="relative rounded-3xl overflow-hidden border-2 border-gold-400/30 shadow-2xl">
               <img
-                src="/images/palm_grove.jpg"
+                src="/images/palm_grove.webp"
                 alt="Date palm orchards in Al-Madinah at sunset"
                 className="w-full h-[400px] sm:h-[480px] object-cover hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-date-900/80 via-transparent to-transparent" />
 

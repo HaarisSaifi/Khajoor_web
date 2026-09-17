@@ -32,7 +32,7 @@ const GUIDE_ITEMS: GuideItem[] = [
     moisture: 'Balanced Moist',
     bestPairing: 'Fresh Camel or Almond Milk, Gahwa',
     colorHex: '#2A120D',
-    image: '/images/ajwa.jpg',
+    image: '/images/ajwa.webp',
     idealFor: 'Sacred tradition, morning vitality, cardiac support'
   },
   {
@@ -45,7 +45,7 @@ const GUIDE_ITEMS: GuideItem[] = [
     moisture: 'High Moist',
     bestPairing: 'Blue Cheese, Roasted Walnuts, Espresso',
     colorHex: '#B86B2B',
-    image: '/images/medjool.jpg',
+    image: '/images/medjool.webp',
     idealFor: 'Gourmet dessert substitute, luxury serving, pre-workout'
   },
   {
@@ -58,7 +58,7 @@ const GUIDE_ITEMS: GuideItem[] = [
     moisture: 'Soft Rutab',
     bestPairing: 'Cardamom Arabic Coffee, Clotted Cream',
     colorHex: '#D5A24B',
-    image: '/images/sukkari.jpg',
+    image: '/images/sukkari.webp',
     idealFor: 'Afternoon tea, festive hospitality, sweet cravings'
   },
   {
@@ -71,7 +71,7 @@ const GUIDE_ITEMS: GuideItem[] = [
     moisture: 'Semi-Dry',
     bestPairing: 'Black Ceylon Tea, Roasted Almonds',
     colorHex: '#723A2A',
-    image: '/images/mabroom.jpg',
+    image: '/images/mabroom.webp',
     idealFor: 'Connoisseurs who prefer low stickiness & sustained energy'
   },
   {
@@ -84,7 +84,7 @@ const GUIDE_ITEMS: GuideItem[] = [
     moisture: 'Moist',
     bestPairing: 'Ginger Cardamom Tea, Cashews',
     colorHex: '#355B3E',
-    image: '/images/safawi.jpg',
+    image: '/images/safawi.webp',
     idealFor: 'Daily iron & potassium boost, recovery after fasting'
   },
   {
@@ -97,7 +97,7 @@ const GUIDE_ITEMS: GuideItem[] = [
     moisture: 'Semi-Dry',
     bestPairing: 'Oatmeal, Smoothies, Warm Milk',
     colorHex: '#572A1D',
-    image: '/images/khudri.jpg',
+    image: '/images/khudri.webp',
     idealFor: 'All-day healthy family snacking and natural baking'
   }
 ];
@@ -159,6 +159,8 @@ export const DateGuideSection: React.FC<DateGuideSectionProps> = ({
                   src={selected.image}
                   alt={selected.title}
                   className="w-full h-full object-cover rounded-xl"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute top-6 left-6 px-3 py-1 rounded-full bg-date-900/85 text-gold-300 text-xs font-bold backdrop-blur-sm">
                   {selected.variety} Variety

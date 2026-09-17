@@ -67,8 +67,8 @@ export const GiftBoxesPage: React.FC<GiftBoxesPageProps> = () => {
       badge: 'Gift Pick',
       rating: 5.0,
       reviewCount: 42,
-      images: ['/images/gift_box.jpg'],
-      cutoutImage: '/images/gift_box.jpg',
+      images: ['/images/gift_box.webp'],
+      cutoutImage: '/images/gift_box.webp',
       featured: true,
       category: 'gifts',
       pairingSuggestions: ['Arabic Gahwa', 'Saffron Tea'],
@@ -136,9 +136,11 @@ export const GiftBoxesPage: React.FC<GiftBoxesPageProps> = () => {
           <div className="lg:col-span-5 bg-cream p-6 sm:p-8 rounded-4xl border border-sand-200 shadow-warm-lg space-y-6 sticky top-28">
             <div className="relative w-full aspect-square rounded-3xl overflow-hidden border-2 border-gold-400/40 shadow-xl group">
               <img
-                src="/images/gift_box.jpg"
+                src="/images/gift_box.webp"
                 alt="Custom Luxury Gift Box"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-date-900/60 via-transparent to-transparent pointer-events-none" />
 

@@ -134,6 +134,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({ onSelectProduct }) => 
                             src={product.cutoutImage}
                             alt={product.name}
                             className="w-12 h-12 rounded-xl object-cover border border-sand-200"
+                            loading="lazy"
+                            decoding="async"
                           />
                           <div>
                             <h4 className="text-sm font-bold text-date-900 group-hover:text-caramel-600 transition-colors">

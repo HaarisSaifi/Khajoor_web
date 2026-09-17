@@ -155,6 +155,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onNavigateShop }) => {
                           src={item.image}
                           alt={item.productName}
                           className="w-16 h-16 rounded-xl object-contain bg-sand-100 p-1 border border-sand-200 flex-shrink-0"
+                          loading="lazy"
+                          decoding="async"
                         />
 
                         {/* Details */}

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useStore } from '../../context/StoreContext';
 import { HERO_SLIDES } from '../../data/catalog';
 import { HeroSlide } from '../../types';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import {
   ChevronLeft,
   ChevronRight,
@@ -28,10 +28,17 @@ export const HeroStage: React.FC<HeroStageProps> = ({ onNavigate, onSelectProduc
   const [direction, setDirection] = useState<1 | -1>(1);
   const [isPaused, setIsPaused] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [mousePos, setMousePos] = useState({ rotateX: 0, rotateY: 0, lightX: 50, lightY: 50 });
   const stageRef = useRef<HTMLDivElement>(null);
+  const sheenRef = useRef<HTMLDivElement>(null);
   const autoplayTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const rafId = useRef<number | null>(null);
+
+  // High performance GPU-accelerated motion values (Zero React re-renders on cursor move)
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const smoothX = useSpring(mouseX, { stiffness: 180, damping: 20, mass: 0.7 });
+  const smoothY = useSpring(mouseY, { stiffness: 180, damping: 20, mass: 0.7 });
+  const rotateX = useTransform(smoothY, [-0.5, 0.5], [8, -8]);
+  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-10, 10]);
 
   // Preload all variety images into browser cache so slide transitions are instant
   useEffect(() => {
@@ -44,33 +51,27 @@ export const HeroStage: React.FC<HeroStageProps> = ({ onNavigate, onSelectProduc
   const handleStageMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!stageRef.current) return;
     const rect = stageRef.current.getBoundingClientRect();
-    const clientX = e.clientX;
-    const clientY = e.clientY;
+    const nx = (e.clientX - rect.left) / rect.width - 0.5;
+    const ny = (e.clientY - rect.top) / rect.height - 0.5;
 
-    if (rafId.current) cancelAnimationFrame(rafId.current);
+    // Direct compositor thread update (0 React re-renders)
+    mouseX.set(nx);
+    mouseY.set(ny);
 
-    rafId.current = requestAnimationFrame(() => {
-      const x = (clientX - rect.left) / rect.width - 0.5;
-      const y = (clientY - rect.top) / rect.height - 0.5;
-      setMousePos({
-        rotateY: Math.round(x * 20 * 10) / 10, // -10deg to +10deg smooth tilt
-        rotateX: Math.round(-y * 16 * 10) / 10, // -8deg to +8deg smooth tilt
-        lightX: Math.round(((clientX - rect.left) / rect.width) * 100),
-        lightY: Math.round(((clientY - rect.top) / rect.height) * 100),
-      });
-    });
+    if (sheenRef.current) {
+      const px = Math.round((nx + 0.5) * 100);
+      const py = Math.round((ny + 0.5) * 100);
+      sheenRef.current.style.background = `radial-gradient(circle at ${px}% ${py}%, rgba(255, 255, 255, 0.42) 0%, transparent 62%)`;
+    }
   };
 
   const handleStageMouseLeave = () => {
-    if (rafId.current) cancelAnimationFrame(rafId.current);
-    setMousePos({ rotateX: 0, rotateY: 0, lightX: 50, lightY: 50 });
+    mouseX.set(0);
+    mouseY.set(0);
+    if (sheenRef.current) {
+      sheenRef.current.style.background = 'radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.22) 0%, transparent 62%)';
+    }
   };
-
-  useEffect(() => {
-    return () => {
-      if (rafId.current) cancelAnimationFrame(rafId.current);
-    };
-  }, []);
 
   const activeSlide: HeroSlide = HERO_SLIDES[currentIndex];
   const activeProduct = products.find((p) => p.slug === activeSlide.productSlug) || products[0];
@@ -132,14 +133,14 @@ export const HeroStage: React.FC<HeroStageProps> = ({ onNavigate, onSelectProduc
       aria-label="Khajoor Variety Showcase"
     >
       {/* Background Subtle Sand Gradient & Organic Ambient Glow */}
-      <div className="absolute inset-0 pointer-events-none opacity-60">
+      <div className="absolute inset-0 pointer-events-none opacity-60" style={{ transform: 'translateZ(0)' }}>
         <div
           className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full blur-3xl transition-colors duration-1000"
-          style={{ backgroundColor: `${activeSlide.accentColor}15` }}
+          style={{ backgroundColor: `${activeSlide.accentColor}15`, willChange: 'background-color' }}
         />
         <div
           className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full blur-3xl transition-colors duration-1000"
-          style={{ backgroundColor: `${activeSlide.blobColor}35` }}
+          style={{ backgroundColor: `${activeSlide.blobColor}35`, willChange: 'background-color' }}
         />
       </div>
 
@@ -305,20 +306,15 @@ export const HeroStage: React.FC<HeroStageProps> = ({ onNavigate, onSelectProduc
                 <span className="text-sm font-black text-date-900 leading-none mt-0.5">VIP</span>
               </motion.div>
 
-              {/* Interactive 3D Parallax Tilt Container (Reacts to Cursor) */}
+              {/* Interactive 3D Parallax Tilt Container (Reacts to Cursor with 0 React re-renders) */}
               <motion.div
                 className="relative flex items-center justify-center pointer-events-none"
-                animate={{
-                  rotateX: mousePos.rotateX,
-                  rotateY: mousePos.rotateY,
+                style={{
+                  rotateX,
+                  rotateY,
+                  transformStyle: 'preserve-3d',
+                  willChange: 'transform',
                 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 220,
-                  damping: 22,
-                  mass: 0.8,
-                }}
-                style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
               >
                 {/* Physically Grounded Floor Shadow Anchored Under the Pedestal Base */}
                 <div className="absolute -bottom-6 sm:-bottom-8 w-[340px] sm:w-[420px] lg:w-[460px] h-12 flex items-center justify-center pointer-events-none z-10">
@@ -372,11 +368,12 @@ export const HeroStage: React.FC<HeroStageProps> = ({ onNavigate, onSelectProduc
                       transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
                       className="relative w-[340px] sm:w-[440px] lg:w-[480px] aspect-square flex items-center justify-center select-none"
                     >
-                      {/* Interactive Studio Specular Sheen (Moves with cursor) */}
+                      {/* Interactive Studio Specular Sheen (Moves with cursor smoothly without overlay GPU penalty) */}
                       <div
-                        className="absolute inset-4 rounded-full pointer-events-none z-10 opacity-30 mix-blend-overlay transition-opacity duration-300"
+                        ref={sheenRef}
+                        className="absolute inset-4 rounded-full pointer-events-none z-10 transition-opacity duration-300"
                         style={{
-                          background: `radial-gradient(circle at ${mousePos.lightX}% ${mousePos.lightY}%, rgba(255, 255, 255, 0.95) 0%, transparent 60%)`,
+                          background: 'radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.22) 0%, transparent 62%)',
                         }}
                       />
 
@@ -387,6 +384,7 @@ export const HeroStage: React.FC<HeroStageProps> = ({ onNavigate, onSelectProduc
                         className="w-full h-full object-contain pointer-events-auto select-none drop-shadow-[0_20px_35px_rgba(42,18,13,0.38)] hover:scale-[1.03] transition-transform duration-500 ease-out"
                         onClick={() => onSelectProduct(activeSlide.productSlug)}
                         loading="eager"
+                        decoding="async"
                         draggable={false}
                       />
                     </motion.div>

@@ -68,9 +68,11 @@ export const GiftBanner: React.FC<GiftBannerProps> = ({ onNavigateGifts }) => {
             <div className="lg:col-span-5 relative flex items-center justify-center">
               <div className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden border-2 border-gold-400/40 shadow-2xl group">
                 <img
-                  src="/images/gift_box.jpg"
+                  src="/images/gift_box.webp"
                   alt="Sultan Emerald & Gold Luxury Khajoor Gift Box"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-date-900/60 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-4 left-4 right-4 bg-date-900/80 backdrop-blur-md p-3 rounded-xl border border-gold-400/30 text-center">
