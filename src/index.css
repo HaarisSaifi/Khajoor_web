@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sand-50: #FFF8ED;
+  --sand-100: #F7E9D3;
+  --sand-200: #ECD6B8;
+  --date-900: #2A120D;
+  --date-800: #3B1A12;
+  --date-700: #572A1D;
+  --caramel-500: #B86B2B;
+  --gold-400: #D5A24B;
+  --palm-600: #355B3E;
+  --cream: #FFFDF8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: var(--sand-50);
+    color: var(--date-900);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-luxury {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* Custom Gold & Date Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7E9D3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #BD8C35;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9B541C;
+}
+
+/* Glassmorphic luxury effects */
+.glass-nav {
+  background: rgba(255, 248, 237, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(213, 162, 75, 0.18);
+}
+
+.glass-dark {
+  background: rgba(42, 18, 13, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(213, 162, 75, 0.22);
+}
+
+.glass-card {
+  background: rgba(255, 253, 248, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(236, 214, 184, 0.7);
+}
+
+/* Organic Morphing Blob SVG keyframes */
+@keyframes morphBlob {
+  0%, 100% {
+    border-radius: 62% 38% 70% 30% / 30% 64% 36% 70%;
+  }
+  33% {
+    border-radius: 42% 58% 49% 51% / 57% 41% 59% 43%;
+  }
+  66% {
+    border-radius: 73% 27% 55% 45% / 40% 72% 28% 60%;
+  }
+}
+
+.animate-morph-blob {
+  animation: morphBlob 14s ease-in-out infinite alternate;
+}
+
+/* Soft gold glow */
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(213, 162, 75, 0) 0%,
+    rgba(213, 162, 75, 0.3) 50%,
+    rgba(213, 162, 75, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
